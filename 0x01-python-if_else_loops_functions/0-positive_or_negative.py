@@ -3,12 +3,9 @@ import random
 
 number = random.randint(-10, 10)
 # YOUR CODE HERE
-number_type = ""
 if number > 0:
-    number_type = "positive"
+	print("{:d} is positive\n".format(number))
 elif number == 0:
-    number_type = "zero"
+	print("{:d} is zero\n".format(number))
 else:
-    number_type = "negative"
-
-print("{:d} is {:s}\n".format(number, number_type))
+	print("{:d} is negative\n".format(number))
