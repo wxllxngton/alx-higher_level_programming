@@ -1,17 +1,2 @@
 #!/bin/bash
-
-# Get the Python file name from the environment variable
-py_file=$PYFILE
-
-# Check if the environment variable is set
-if [ -n "$py_file" ]; then
-    # Compile the Python script
-    python -m py_compile "$py_file"
-
-    # Create the compiled output filename
-    output_file="${py_file}c"
-
-    echo "Compiled file: $output_file"
-else
-    echo "Environment variable PYFILE is not set."
-fi
+py_file=$PYFILE; if [ -n "$py_file" ]; then python -m py_compile "$py_file"; output_file="${py_file}c"; echo "Compiled file: $output_file"; else echo "Environment variable PYFILE is not set."; fi
