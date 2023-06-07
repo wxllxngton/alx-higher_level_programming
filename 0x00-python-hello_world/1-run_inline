@@ -1,2 +1,2 @@
 #!/bin/bash
-python <(echo -e "$PYCODE\n")
+python3 <(echo -e "$PYCODE\n")
