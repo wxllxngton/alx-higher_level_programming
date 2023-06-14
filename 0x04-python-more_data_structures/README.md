@@ -63,3 +63,7 @@ This file contains a function named simple_delete that takes a dictionary and a 
 **9-multiply_by_2.py:**
 
 This file contains a function named multiply_by_2 that takes a dictionary with integer values as input. It multiplies each value in the dictionary by 2.
+
+**103-python.c:**
+
+This file contains C code with two functions: `print_python_list_info` and `print_python_bytes_info`. These functions print basic information about Python lists and Python bytes objects, respectively. They provide details such as size, allocated memory, and content. The functions likely utilize Python's C API to access the required information and format it for printing. The purpose is to aid in understanding and analyzing the properties and memory usage of lists and bytes objects.
