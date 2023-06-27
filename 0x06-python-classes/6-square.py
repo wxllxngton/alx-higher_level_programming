@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+"""
+Module: 6
+"""
+
 class Square:
     """
     Represents a square shape with a given size and position.
@@ -8,6 +13,7 @@ class Square:
         position (tuple): The position of the square's top-left corner.
 
     Methods:
+        __init__(size, position): Initializes a Square instance with a specified size and position.
         area(): Calculates and returns the area of the square.
         my_print(): Prints a visual representation of the square.
     """
