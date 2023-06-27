@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+"""
+Module: 101
+"""
+
 class Square:
     """
     Represents a square shape with a given size and position.
