@@ -6,14 +6,14 @@ Module: 1
 
 class Square:
     """
-    Square class represents a square shape.
-
-    Attributes:
-        size (int): The size of the square.
+    Represents a square shape with a given size.
     """
 
     def __init__(self, size):
         """
-        Initializes a Square instance.
+        Initializes a Square instance with a specified size.
+
+        Args:
+            size: The size of the square's sides.
         """
-		self.__size = size
+        self.__size = size
