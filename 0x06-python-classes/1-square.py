@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+"""
+Module: 1
+"""
+
 class Square:
     """
     Square class represents a square shape.
@@ -7,15 +12,8 @@ class Square:
         size (int): The size of the square.
     """
 
-    def __init__(self, size):
+    def __init__(self):
         """
-        Initializes a Square instance with a given size.
-
-        Args:
-            size (int): The size of the square. Must be an integer.
-
-        Raises:
-            TypeError: If size is not an integer.
+        Initializes a Square instance.
         """
-        self.__size = size
-
+        pass
