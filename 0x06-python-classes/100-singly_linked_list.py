@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+"""
+Module: 100
+"""
+
 class Node:
     """
     Represents a node of a singly linked list.
