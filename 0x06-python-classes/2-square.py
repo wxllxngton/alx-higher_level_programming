@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+
+"""
+Module: 2
+"""
+
 class Square:
     """
     Represents a square shape with a given size.
@@ -27,4 +32,3 @@ class Square:
             raise ValueError("size must be >= 0")
         else:
             self.__size = size
-
