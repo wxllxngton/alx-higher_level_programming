@@ -14,3 +14,4 @@ class Square:
         Initializes a Square instance.
         """
         pass
+		
