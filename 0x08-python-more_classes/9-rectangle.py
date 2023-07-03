@@ -165,4 +165,5 @@ class Rectangle:
         Returns:
             Rectangle: The new square object.
         """
-        return cls(size, size)
+		width = height = size
+        return cls(width, height)
