@@ -1,4 +1,6 @@
-Requirements for `rectangle.py`
+## 0x08-python-more_classes
+
+**Requirements for `rectangle.py`:**
 
 <ul>
 <li>Private instance attribute: <code>width</code>:
@@ -60,4 +62,27 @@ Requirements for `rectangle.py`
 </ul></li>
 <li>Class method <code>def square(cls, size=0):</code> that returns a new Rectangle instance with <code>width == height == size</code></li>
 <li>You are not allowed to import any module</li>
+</ul>
+
+**Requirements for `101-nqueens.py`:**
+<ul>
+<li>Usage: <code>nqueens N</code>
+
+<ul>
+<li>If the user called the program with the wrong number of arguments, print <code>Usage: nqueens N</code>, followed by a new line, and exit with the status <code>1</code></li>
+</ul></li>
+<li>where N must be an integer greater or equal to <code>4</code>
+
+<ul>
+<li>If N is not an integer, print <code>N must be a number</code>, followed by a new line, and exit with the status <code>1</code></li>
+<li>If N is smaller than <code>4</code>, print <code>N must be at least 4</code>, followed by a new line, and exit with the status <code>1</code> </li>
+</ul></li>
+<li>The program should print every possible solution to the problem
+
+<ul>
+<li>One solution per line</li>
+<li>Format: see example</li>
+<li>You don’t have to print the solutions in a specific order</li>
+</ul></li>
+<li>You are only allowed to import the <code>sys</code> module</li>
 </ul>
