@@ -64,7 +64,10 @@
 <li>You are not allowed to import any module</li>
 </ul>
 
+<hr>
+
 **Requirements for `101-nqueens.py`:**
+
 <ul>
 <li>Usage: <code>nqueens N</code>
 
