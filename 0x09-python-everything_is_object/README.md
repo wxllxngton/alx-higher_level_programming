@@ -1,4 +1,4 @@
-## 0x09. Python - Everything is object**
+## 0x09. Python - Everything is object
 
 ## What should have been learnt
 - What is an object?
