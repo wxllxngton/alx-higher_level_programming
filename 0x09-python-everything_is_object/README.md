@@ -15,7 +15,9 @@
 - What are the built-in immutable types.
 - How does Python pass variables to functions.
 
+<hr>
 
+## Questions
 * **0. Who am I?** - What function would you use to print the type of an object? - `0-answer.txt`.
 * **1. Where are you?** - How do you get the variable identifier (which is the memory address in the CPython implementation)? - `1-answer.txt`.
 * **2. Right count** - In the following code, do `a` and `b` point to the same object? Answer with `Yes` or `No`. - `2-answer.txt`.
