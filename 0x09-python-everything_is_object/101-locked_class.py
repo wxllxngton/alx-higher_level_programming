@@ -1,31 +1,19 @@
 #!/usr/bin/python3
+"""Defines a class LockedClass"""
 
-"""
-LockedClass Module
-"""
 
 class LockedClass:
-    """A class that prevents dynamic creation of instance attributes, except for 'first_name'."""
+    """
+    Prevents the user from dynamically creating new instance attributes,
+    except if the new instance attribute is called first_name.
 
-    # Limit the allowed instance attributes to 'first_name' using __slots__
-    __slots__ = ['first_name']
+    Attributes:
+        first_name (str): first name of something.
+    """
 
-    def __setattr__(self, name, value):
-        """
-        Override the attribute assignment behavior.
+    __slots__ = ["first_name"]
 
-        Args:
-            name (str): The name of the attribute being assigned.
-            value: The value to be assigned to the attribute.
+    def __init__(self):
+        """Creates new instances of Locked Class."""
 
-        Raises:
-            AttributeError: If the attribute being assigned is not 'first_name'.
-
-        Note:
-            This method is called whenever an attribute assignment is attempted.
-            It allows assignment of 'first_name' instance attribute and raises
-            an AttributeError for any other attribute assignment.
-        """
-        if name != 'first_name':
-            raise AttributeError("'LockedClass' object does not support attribute assignment")
-        self.__dict__[name] = value
+        self.first_name = "first_name"
