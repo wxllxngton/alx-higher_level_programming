@@ -2,7 +2,7 @@
 """
 This is the 'lazy_matrix_mul' module.
 
-It contains a function that defines a matrix multiplication function using NumPy.
+It contains a function that multiplies 2 matrices by using the module NumPy.
 """
 import numpy as np
 
