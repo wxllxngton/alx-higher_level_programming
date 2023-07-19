@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+
+"""
+This is the 'matrix_mul' module.
+
+It contains a function that multiplies 2 matrices.
+"""
+
 def matrix_mul(m_a, m_b):
     """
     Multiplies two matrices and returns the resulting matrix.
