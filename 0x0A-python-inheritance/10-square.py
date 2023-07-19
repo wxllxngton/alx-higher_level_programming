@@ -1,25 +1,23 @@
 #!/usr/bin/python3
-
+Rectangle = __import__('9-rectangle').Rectangle
 """
-10-square
+===================================
+module with class BaseGeometry
+===================================
 """
 
 
-class Sqaure(Rectangle):
-    def __init__(self, width, height):
-        """
-        Initializes a Sqaure instance with private attributes W and H.
-        Validates the W and H as positive integers using integer_validator.
-        """
-        self.__width = 0
-        self.__height = 0
-        self.integer_validator("width", width)
-        self.integer_validator("height", height)
-        self.__width = width
-        self.__height = height
+class Square(Rectangle):
+    """Square class that inherits from Rectangle that inherits BaseGeometry"""
+
+    def __init__(self, size):
+        """Method for initialized the attrubutes"""
+
+        super().__init__(size, size)
+        self.integer_validator("size", size)
+        self.__size = size
 
     def area(self):
-        """
-        Calculates and returns the area of the Sqaure.
-        """
-        return self.__width * self.__height
+        """rectangle area"""
+
+        return self.__size ** 2
