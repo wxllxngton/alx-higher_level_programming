@@ -2,7 +2,7 @@
 """
 This is the 'matrix_mul' module.
 
-It contains a function that defines a matrix multiplication function.
+It contains a function that multiplies 2 matrices
 """
 
 
