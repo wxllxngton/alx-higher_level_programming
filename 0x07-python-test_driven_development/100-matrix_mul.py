@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Defines a matrix multiplication function."""
+"""
+This is the 'matrix_mul' module.
+
+It contains a function that defines a matrix multiplication function.
+"""
 
 
 def matrix_mul(m_a, m_b):
