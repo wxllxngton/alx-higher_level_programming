@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Defines a matrix multiplication function using NumPy."""
+"""
+This is the 'lazy_matrix_mul' module.
+
+It contains a function that defines a matrix multiplication function using NumPy.
+"""
 import numpy as np
 
 
