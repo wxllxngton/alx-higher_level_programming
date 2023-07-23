@@ -3,7 +3,7 @@
 This is the 'Rectangle' module.
 """
  
-# Base = __import__('base').Base
+Base = __import__('base').Base
 
 class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -133,6 +133,12 @@ class Rectangle(Base):
             print()
                 
     def __str__(self):
+								"""
+        Returns a string representation of the Square instance.
+
+        Returns:
+            str: A formatted string representing the Square.
+        """
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height)
         
         
