@@ -133,12 +133,6 @@ class Rectangle(Base):
             print()
                 
     def __str__(self):
-								"""
-        Returns a string representation of the Square instance.
-
-        Returns:
-            str: A formatted string representing the Square.
-        """
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x, self.__y, self.__width, self.__height)
         
         
@@ -172,3 +166,18 @@ class Rectangle(Base):
                 self.__x = kwargs['x']
             if 'y' in kwargs:
                 self.__y = kwargs['y']
+                
+    def to_dictionary(self):
+        """
+        Returns the dictionary representation of a Rectangle.
+
+        Returns:
+            dict: The dictionary representation of a Rectangle.
+        """
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y
+        }
