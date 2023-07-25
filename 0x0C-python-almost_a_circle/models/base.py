@@ -5,6 +5,7 @@ This is the 'Base' module.
 
 import json
 import os
+import csv
 
 class Base:
     __nb_objects = 0
@@ -24,87 +25,59 @@ class Base:
             
     @staticmethod
     def to_json_string(list_dictionaries):
-        """
-        Returns the JSON string representation of list_dictionaries.
+        # ... (existing code)
 
-        Args:
-            list_dictionaries (list of dicts): The list of dictionaries to be returned as a JSON string representation.
-
-        Returns:
-            If list_dictionaries is None or empty, return the string: "[]" else, return the JSON string representation of list_dictionaries
-        """
-        if list_dictionaries is None:
-            return "[]"
-        else:
-            return json.dumps(list_dictionaries)
-            
     @classmethod
     def save_to_file(cls, list_objs):
+        # ... (existing code)
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
         """
-        Writes the JSON string representation of list_objs to a file.
+        Serializes a list of objects to CSV format and writes it to a file.
 
         Args:
-            list_objs (list of objects): The list of objects whose JSON string representation will be written to a file.
+            list_objs (list of objects): The list of objects to be serialized.
 
         Returns:
             None.
         """
-        filename = f"{cls.__name__}.json"
-        data = cls.to_json_string([obj.to_dictionary() for obj in list_objs])  # Convert objects to dictionaries
-        with open(filename, 'w') as file:
-            file.write(data)
-            
+        filename = f"{cls.__name__}.csv"
+        with open(filename, 'w', newline='') as file:
+            writer = csv.writer(file)
+            if cls.__name__ == 'Rectangle':
+                writer.writerow(['id', 'width', 'height', 'x', 'y'])
+            elif cls.__name__ == 'Square':
+                writer.writerow(['id', 'size', 'x', 'y'])
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary().values())
+
     @staticmethod
     def from_json_string(json_string):
-        """
-        Returns the list of the JSON string representation json_string.
+        # ... (existing code)
 
-        Args:
-            json_string (str): The string representing a list of dictionaries.
-
-        Returns:
-            list: The list represented by json_string, or an empty list if json_string is None or empty, or if the JSON string is invalid.
-        """
-        if not json_string:
-            return []
-        try:
-            return json.loads(json_string)
-        except json.JSONDecodeError:
-            return []
-            
     @classmethod
     def create(cls, **dictionary):
-        """
-        Returns an instance with all attributes already set.
-        
-        Args:
-            dictionary (dict): A dictionary containing attribute values for the instance.
-            
-        Returns:
-            instance: The instance with all attributes set.
-        """
-        dummy_instance = cls(1, 1)  # Create a dummy instance with any initial width and height values
-        dummy_instance.update(**dictionary)  # Use update with **kwargs to set the attributes from the dictionary
-        return dummy_instance
-    
+        # ... (existing code)
+
     @classmethod
     def load_from_file(cls):
+        # ... (existing code)
+
+    @classmethod
+    def load_from_file_csv(cls):
         """
-        Returns a list of instances.
+        Deserializes a list of objects from CSV format and returns a list of instances.
 
         Returns:
             list: The list of instances.
         """
-        filename = f"{cls.__name__}.json"
+        filename = f"{cls.__name__}.csv"
         if not os.path.exists(filename):
             return []
 
-        with open(filename, 'r') as file:
-            json_string = file.read()
-            list_dicts = cls.from_json_string(json_string)
+        with open(filename, 'r', newline='') as file:
+            reader = csv.DictReader(file)
+            list_dicts = [dict(row) for row in reader]
 
         return [cls.create(**dictionary) for dictionary in list_dicts]
-        
-            
-
-					
