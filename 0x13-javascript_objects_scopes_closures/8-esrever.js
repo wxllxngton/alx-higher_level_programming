@@ -1,5 +1,7 @@
 #!/usr/bin/node
 exports.esrever = function (list) {
-  const clonedList = list.slice();
-  return clonedList.reverse();
+  return list.reduceRight(function (array, current) {
+    array.push(current);
+    return array;
+  }, []);
 };
