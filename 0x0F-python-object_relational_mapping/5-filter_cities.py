@@ -32,14 +32,19 @@ if __name__ == "__main__":
         WHERE states.name = %s
         ORDER BY cities.id ASC
     """
-    cur.execute(query, (argv[4],))
+    state_name = argv[4]
+    cur.execute(query, (state_name,))
 
     # Fetch all the rows
     rows = cur.fetchall()
 
-    # Print the rows
-    for row in rows:
-        print(row[0])
+    # Check if any cities were found
+    if not rows:
+        print("No cities found for the state {}".format(state_name))
+    else:
+        # Print the rows
+        cities = [row[0] for row in rows]
+        print(", ".join(cities))
 
     # Close cursor and database connection
     cur.close()
