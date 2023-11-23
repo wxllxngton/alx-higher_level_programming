@@ -3,11 +3,8 @@
 Module that contains the class definition of a City.
 """
 
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey
-
-# Create an instance of declarative_base
-Base = declarative_base()
+from relationship_state import Base
 
 
 class City(Base):
