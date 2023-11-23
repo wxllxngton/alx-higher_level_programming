@@ -51,9 +51,16 @@ if __name__ == "__main__":
     session = setup(sys.argv[1], sys.argv[2], sys.argv[3])
 
     # Create State "California" with City "San Francisco"
-    california = State(name="California", cities=[City(name="San Francisco")])
-    session.add(california)
-    session.commit()
+    # california = State(name="California", cities=[City(name="San Francisco")])
+    # session.add(california)
+    # session.commit()
 
     # Print the new state's ID
-    print(california.id)
+    # print(california.id)
+
+    new_city = City(name="San Francisco")
+    new_states = State(name="California")
+    new.cities.append(new_city)
+    session.add_all([new_states, new_city])
+    session.commit()
+    session.close()
