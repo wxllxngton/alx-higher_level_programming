@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This script lists all states with a name starting with N from the hbtn_0e_0_usa database.
+This script lists all states with a name starting with 'N',
+from the hbtn_0e_0_usa database.
 """
 
 import MySQLdb
