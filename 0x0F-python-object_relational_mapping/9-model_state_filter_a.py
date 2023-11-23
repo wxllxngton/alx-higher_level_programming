@@ -38,10 +38,12 @@ if __name__ == "__main__":
         .all()
     )
 
-    if not states_with_a:
-        print("Nothing")
-    else:
-        for state in states_with_a:
-            print("{}: {}".format(state.id, state.name))
-
+    states = (
+        session.query(State)
+        .filter(State.name.like("%a%"))
+        .order_by(State.id)
+        .all()
+    )
+    for state in states:
+        print("{}: {}".format(state.id, state.name))
     session.close()
