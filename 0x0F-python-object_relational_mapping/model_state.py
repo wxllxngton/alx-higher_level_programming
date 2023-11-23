@@ -14,6 +14,10 @@ Base = declarative_base()
 class State(Base):
     """
     State class that represents the 'states' table in MySQL.
+
+    Attributes:
+        id: Id state
+        name: Name of state
     """
 
     __tablename__ = "states"
