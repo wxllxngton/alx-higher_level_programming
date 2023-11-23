@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Script that lists all State objects that contain the letter 'a' from the database hbtn_0e_6_usa.
+Script that lists all State objects,
+that contain the letter 'a' from the database hbtn_0e_6_usa.
 """
 
 import sys
@@ -42,3 +43,5 @@ if __name__ == "__main__":
     else:
         for state in states_with_a:
             print("{}: {}".format(state.id, state.name))
+
+    session.close()

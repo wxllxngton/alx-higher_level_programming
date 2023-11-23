@@ -42,16 +42,22 @@ def setup(username, password, database_name):
 
 def delete_states_with_char(session, where_char):
     """
-    Deletes all State objects with a name containing the letter 'a' from the database.
+    Deletes all State objects with a name
+    containing the letter 'a' from the database.
 
     Args:
         session (Session): SQLAlchemy session object.
     """
     try:
         # Delete states with 'a' in their name
-        for state in session.query(State):
-            if where_char in state.name:
-                session.delete(state)
+        states = (
+            session.query(State)
+            .filter(State.name.ilike("%{}%".format(where_char)))
+            .all()
+        )
+
+        for state in states:
+            session.delete(state)
         session.commit()
         print("States deleted successfully!")
     except Exception as e:

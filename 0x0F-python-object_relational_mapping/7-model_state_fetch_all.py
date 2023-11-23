@@ -32,3 +32,5 @@ if __name__ == "__main__":
     # Query and print State objects
     for state in session.query(State).order_by(State.id):
         print("{}: {}".format(state.id, state.name))
+
+    session.close()
