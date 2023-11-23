@@ -26,7 +26,3 @@ class State(Base):
         Return a string representation of the State instance.
         """
         return f"<State(id={self.id}, name={self.name})>"
-
-
-# Importing classes before calling create_all
-Base.metadata.create_all(engine)
