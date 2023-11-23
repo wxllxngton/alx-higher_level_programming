@@ -8,7 +8,8 @@ import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from relationship_state import Base, State
-from relationship_city import City
+
+# from relationship_city import City
 
 
 def setup(username, password, database_name):
@@ -51,19 +52,23 @@ if __name__ == "__main__":
     session = setup(sys.argv[1], sys.argv[2], sys.argv[3])
 
     # Query and print all State and City objects
-    states_and_cities = (
-        session.query(State, City)
-        .join(City, State.id == City.state_id)
-        .order_by(State.id, City.id)
-        .all()
-    )
+    # states_and_cities = (
+    #     session.query(State, City)
+    #     .join(City, State.id == City.state_id)
+    #     .order_by(State.id, City.id)
+    #     .all()
+    # )
 
-    current_state_id = None
+    # current_state_id = None
 
-    for state, city in states_and_cities:
-        if state.id != current_state_id:
-            print("{}: {}".format(state.id, state.name))
-            current_state_id = state.id
-        print("    {}: {}".format(city.id, city.name))
+    # for state, city in states_and_cities:
+    #     if state.id != current_state_id:
+    #         print("{}: {}".format(state.id, state.name))
+    #         current_state_id = state.id
+    #     print("    {}: {}".format(city.id, city.name))
 
+    for state in session.query(State).order_by(State.id).all():
+        print("{}: {}".format(state.id, state.name))
+        for city in state.cities:
+            print("    {}: {}".format(city.id, city.name))
     session.close()
