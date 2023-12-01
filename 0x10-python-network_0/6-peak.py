@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Script to find a peak in a list of integers for interview preparation.
+"""
+Script to find a peak in a list of integers for interview preparation.
 """
 
 """
