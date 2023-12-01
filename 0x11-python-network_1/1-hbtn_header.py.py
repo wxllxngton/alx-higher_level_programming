@@ -18,6 +18,11 @@ if __name__ == "__main__":
     try:
         req = urllib.request.Request(url=url)
         with urllib.request.urlopen(req) as response:
-            print(response.headers.get("X-Request-Id"))
+            headers = response.info()
+            x_request_id = headers.get("X-Request-Id")
+            if x_request_id:
+                print(x_request_id)
+            else:
+                print("X-Request-Id not found in the response headers.")
     except urllib.error.URLError as e:
         print(f"Error accessing the URL: {e}")
