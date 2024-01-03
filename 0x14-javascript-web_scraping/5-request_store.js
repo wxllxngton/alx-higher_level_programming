@@ -9,8 +9,8 @@ const fs = require('fs');
 const { exit } = require('process');
 
 if (process.argv.length !== 4) {
-    console.log(`Usage: ./${process.argv[1]} url file_path`);
-    exit(1);
+  console.log(`Usage: ./${process.argv[1]} url file_path`);
+  exit(1);
 }
 
 /**
@@ -24,12 +24,12 @@ if (process.argv.length !== 4) {
  * @returns {string} - The function return the contents of the webpage.
  */
 const getPageContent = function (error, response, body) {
-    if (error) {
-        console.error(error);
-        exit(1);
-    }
+  if (error) {
+    console.error(error);
+    exit(1);
+  }
 
-    exportToPath(body);
+  exportToPath(body);
 };
 
 /**
@@ -39,20 +39,20 @@ const getPageContent = function (error, response, body) {
  * @returns {void} - The function returns nothing.
  */
 const exportToPath = function (content) {
-    fs.writeFile(
-        process.argv[3],
-        content,
-        {
-            encoding: 'utf-8',
-            flag: 'w',
-            mode: 0o666,
-        },
-        (error) => {
-            if (error) {
-                console.error(error);
-            }
-        }
-    );
+  fs.writeFile(
+    process.argv[3],
+    content,
+    {
+      encoding: 'utf-8',
+      flag: 'w',
+      mode: 0o666
+    },
+    (error) => {
+      if (error) {
+        console.error(error);
+      }
+    }
+  );
 };
 
 request(process.argv[2], getPageContent);
