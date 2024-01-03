@@ -7,8 +7,8 @@ const request = require('request');
 const { exit } = require('process');
 
 if (process.argv.length !== 3) {
-    console.log(`Usage: ./${process.argv[1]} movieId`);
-    exit(1);
+  console.log(`Usage: ./${process.argv[1]} movieId`);
+  exit(1);
 }
 
 /**
@@ -22,32 +22,32 @@ if (process.argv.length !== 3) {
  * @returns {void} - The function returns nothing.
  */
 const printAllCharacters = function (error, response, body) {
-    if (error) {
+  if (error) {
+    console.error(error);
+    exit(1);
+  }
+
+  const filmData = JSON.parse(body);
+  const characterUrls = filmData.characters;
+
+  // Function to handle each character request
+  const handleCharacterRequest = function (characterUrl) {
+    request(characterUrl, (error, response, body) => {
+      if (error) {
         console.error(error);
         exit(1);
-    }
+      }
 
-    const filmData = JSON.parse(body);
-    const characterUrls = filmData.characters;
+      const data = JSON.parse(body);
+      const characterName = data.name;
 
-    // Function to handle each character request
-    const handleCharacterRequest = function (characterUrl) {
-        request(characterUrl, (error, response, body) => {
-            if (error) {
-                console.error(error);
-                exit(1);
-            }
+      // Print character name after adding to the list
+      console.log(characterName);
+    });
+  };
 
-            const data = JSON.parse(body);
-            const characterName = data.name;
-
-            // Print character name after adding to the list
-            console.log(characterName);
-        });
-    };
-
-    // Make requests for each character URL in the order of the list "characters" in the /films/ response
-    characterUrls.forEach(handleCharacterRequest);
+  // Make requests for each character URL in the order of the list "characters" in the /films/ response
+  characterUrls.forEach(handleCharacterRequest);
 };
 
 request(

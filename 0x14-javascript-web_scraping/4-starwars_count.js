@@ -8,8 +8,8 @@ const request = require('request');
 const { exit } = require('process');
 
 if (process.argv.length !== 3) {
-    console.log(`Usage: ./${process.argv[1]} url`);
-    exit(1);
+  console.log(`Usage: ./${process.argv[1]} url`);
+  exit(1);
 }
 
 /**
@@ -24,27 +24,27 @@ if (process.argv.length !== 3) {
  * @returns {void} - The function does not return a value.
  */
 const printOccurences = function (error, response, body) {
-    if (error) {
-        console.error(`Error: ${error.message}`);
-        exit(1);
+  if (error) {
+    console.error(`Error: ${error.message}`);
+    exit(1);
+  }
+
+  const parsedBody = JSON.parse(body);
+  const films = parsedBody.results;
+
+  let occurrences = 0;
+
+  for (const film of films) {
+    if (
+      film.characters.includes(
+        'https://swapi-api.alx-tools.com/api/people/18/'
+      )
+    ) {
+      occurrences++;
     }
+  }
 
-    const parsedBody = JSON.parse(body);
-    const films = parsedBody.results;
-
-    let occurrences = 0;
-
-    for (const film of films) {
-        if (
-            film.characters.includes(
-                'https://swapi-api.alx-tools.com/api/people/18/'
-            )
-        ) {
-            occurrences++;
-        }
-    }
-
-    console.log(occurrences);
+  console.log(occurrences);
 };
 
 request(process.argv[2], printOccurences);

@@ -8,8 +8,8 @@ const request = require('request');
 const { exit } = require('process');
 
 if (process.argv.length !== 3) {
-    console.log(`Usage: ./${process.argv[1]} movieId`);
-    exit(1);
+  console.log(`Usage: ./${process.argv[1]} movieId`);
+  exit(1);
 }
 
 /**
@@ -24,8 +24,8 @@ if (process.argv.length !== 3) {
  * @returns {void} - The function does not return a value.
  */
 const printTitle = function (error, response, body) {
-    const data = JSON.parse(body);
-    console.log(data.title);
+  const data = JSON.parse(body);
+  console.log(data.title);
 };
 
 request(

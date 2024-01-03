@@ -7,11 +7,11 @@ const request = require('request');
 const { exit } = require('process');
 
 if (process.argv.length !== 3) {
-    console.log(`Usage: ./${process.argv[1]} movieId`);
-    exit(1);
+  console.log(`Usage: ./${process.argv[1]} movieId`);
+  exit(1);
 }
 
-let characters = [];
+const characters = [];
 
 /**
  * Prints all characters of a Star Wars movie.
@@ -24,33 +24,33 @@ let characters = [];
  * @returns {void} - The function returns nothing.
  */
 const printAllCharacters = function (error, response, body) {
-    if (error) {
+  if (error) {
+    console.error(error);
+    exit(1);
+  }
+
+  const filmData = JSON.parse(body);
+  const characterUrls = filmData.characters;
+
+  // Function to handle each character request
+  const handleCharacterRequest = function (characterUrl) {
+    request(characterUrl, (error, response, body) => {
+      if (error) {
         console.error(error);
         exit(1);
-    }
+      }
 
-    const filmData = JSON.parse(body);
-    const characterUrls = filmData.characters;
+      const data = JSON.parse(body);
+      const characterName = data.name;
+      characters.push(characterName);
 
-    // Function to handle each character request
-    const handleCharacterRequest = function (characterUrl) {
-        request(characterUrl, (error, response, body) => {
-            if (error) {
-                console.error(error);
-                exit(1);
-            }
+      // Print character name after adding to the list
+      console.log(characterName);
+    });
+  };
 
-            const data = JSON.parse(body);
-            const characterName = data.name;
-            characters.push(characterName);
-
-            // Print character name after adding to the list
-            console.log(characterName);
-        });
-    };
-
-    // Make requests for each character URL
-    characterUrls.forEach(handleCharacterRequest);
+  // Make requests for each character URL
+  characterUrls.forEach(handleCharacterRequest);
 };
 
 request(
