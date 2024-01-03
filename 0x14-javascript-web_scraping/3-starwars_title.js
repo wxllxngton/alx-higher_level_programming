@@ -1,4 +1,4 @@
-#!/usr/bind/node
+#!/usr/bin/node
 /**
  * Script that prints the title of a Star Wars movie
  * where the episode number matches a given integer.
@@ -8,7 +8,7 @@ const request = require('request');
 const { exit } = require('process');
 
 if (process.argv.length != 3) {
-    console.log(`Usage: ./${process.argv[1]} movieId`);
+  console.log(`Usage: ./${process.argv[1]} movieId`);
 }
 
 /**
@@ -18,13 +18,13 @@ if (process.argv.length != 3) {
  * @param {Error} error - The error, if any,
  * that occurred during the request.
  * @param {Object} response - The response object containing
- * informations about the request.
+ * information about the request.
  * @param {string} body - The body of the response.
  * @returns {void} - The function does not return a value.
  */
 const printTitle = function (error, response, body) {
-    const data = response.json();
-    console.log(data.title);
+  const data = JSON.parse(body);
+  console.log(data.title);
 };
 
 request(
