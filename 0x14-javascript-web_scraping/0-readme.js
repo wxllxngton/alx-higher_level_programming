@@ -6,7 +6,7 @@ Script that reads and prints the content of a file.
 const fs = require('fs');
 const { exit } = require('process');
 
-if (process.argv.length == 3) {
+if (process.argv.length != 3) {
     console.log(`Usage: ./${proves.argv[1]} file_path`);
     exit(1);
 }
