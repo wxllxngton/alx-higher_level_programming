@@ -29,7 +29,7 @@ const getPageContent = function (error, response, body) {
         exit(1);
     }
 
-    return body;
+    exportToPath(body);
 };
 
 /**
@@ -55,5 +55,4 @@ const exportToPath = function (content) {
     );
 };
 
-const pageContent = request(process.argv[2], getPageContent);
-exportToPath(pageContent);
+pageContent = request(process.argv[2], getPageContent);
