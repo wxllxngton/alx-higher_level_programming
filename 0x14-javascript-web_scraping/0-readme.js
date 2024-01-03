@@ -16,7 +16,7 @@ const { exit } = require('process');
 //     console.log(data);
 // });
 
-fs.readFile('../../1.json', (err, data) => {
+fs.readFile('./1.json', (err, data) => {
     if (err) {
         console.error(err); // If error occurred while reading the file
         exit(1);
