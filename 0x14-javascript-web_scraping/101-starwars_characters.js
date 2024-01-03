@@ -12,7 +12,7 @@ if (process.argv.length !== 3) {
 }
 
 /**
- * Prints all characters of a Star Wars movie.
+ * Prints all characters of a Star Wars movie in the same order as the list "characters" in the /films/ response.
  *
  * @param {Error} error - The error, if any,
  * that occurred during the request.
