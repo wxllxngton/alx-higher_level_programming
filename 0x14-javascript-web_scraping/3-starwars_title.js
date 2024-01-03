@@ -9,6 +9,7 @@ const { exit } = require('process');
 
 if (process.argv.length !== 3) {
     console.log(`Usage: ./${process.argv[1]} movieId`);
+    exit(1);
 }
 
 /**
