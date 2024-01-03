@@ -22,5 +22,5 @@ fs.readFile('./1.json', 'utf-8', (err, data) => {
         exit(1);
     }
 
-    console.log(data.);
+    console.log(data);
 });
