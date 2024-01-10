@@ -7,8 +7,8 @@ const request = require('request');
 const { exit } = require('process');
 
 if (process.argv.length !== 3) {
-    console.log(`Usage: ./${process.argv[1]} url`);
-    exit(1);
+  console.log(`Usage: ./${process.argv[1]} url`);
+  exit(1);
 }
 
 /**
@@ -20,12 +20,12 @@ if (process.argv.length !== 3) {
  * @returns {void} - The function does not return a value.
  */
 const printStatusCode = function (error, response, body) {
-    if (error) {
-        console.error(error);
-        exit(1);
-    }
+  if (error) {
+    console.error(error);
+    exit(1);
+  }
 
-    console.log(`code: ${response.statusCode}`);
+  console.log(`code: ${response.statusCode}`);
 };
 
 request(process.argv[2], printStatusCode);
