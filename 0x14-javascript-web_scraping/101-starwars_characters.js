@@ -4,53 +4,46 @@
  */
 
 const request = require('request');
-const { exit } = require('process');
 
-if (process.argv.length !== 3) {
-  console.log(`Usage: ./${process.argv[1]} movieId`);
-  exit(1);
+function getDataFrom (url) {
+  return new Promise(function (resolve, reject) {
+    request(url, function (err, _res, body) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(body);
+      }
+    });
+  });
 }
 
-/**
- * Prints all characters of a Star Wars movie in the same order as the list "characters" in the /films/ response.
- *
- * @param {Error} error - The error, if any,
- * that occurred during the request.
- * @param {Object} response - The response object containing
- * information about the request.
- * @param {string} body - The body of the response.
- * @returns {void} - The function returns nothing.
- */
-const printAllCharacters = function (error, response, body) {
-  if (error) {
-    console.error(error);
-    exit(1);
-  }
+function errHandler (err) {
+  console.log(err);
+}
 
-  const filmData = JSON.parse(body);
-  const characterUrls = filmData.characters;
+function printMovieCharacters (movieId) {
+  const movieUri = `https://swapi-api.hbtn.io/api/films/${movieId}`;
 
-  // Function to handle each character request
-  const handleCharacterRequest = function (characterUrl) {
-    request(characterUrl, (error, response, body) => {
-      if (error) {
-        console.error(error);
-        exit(1);
+  getDataFrom(movieUri)
+    .then(JSON.parse, errHandler)
+    .then(function (res) {
+      const characters = res.characters;
+      const promises = [];
+
+      for (let i = 0; i < characters.length; ++i) {
+        promises.push(getDataFrom(characters[i]));
       }
 
-      const data = JSON.parse(body);
-      const characterName = data.name;
-
-      // Print character name after adding to the list
-      console.log(characterName);
+      Promise.all(promises)
+        .then((results) => {
+          for (let i = 0; i < results.length; ++i) {
+            console.log(JSON.parse(results[i]).name);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     });
-  };
+}
 
-  // Make requests for each character URL in the order of the list "characters" in the /films/ response
-  characterUrls.forEach(handleCharacterRequest);
-};
-
-request(
-    `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`,
-    printAllCharacters
-);
+printMovieCharacters(process.argv[2]);
